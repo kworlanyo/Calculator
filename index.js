@@ -20,19 +20,19 @@ for (let i = 0; i < operatorBox.length; i++) {
   operatorBox[i].addEventListener("click", () => {
     switch (i) {
       case 0:
-        calculation.innerHTML += "<span class='add-color'>+</span>";
+        calculation.innerHTML += "+";
         total.innerHTML = "";
         break;
       case 1:
-        calculation.innerHTML += "<span class='add-color'>-</span>";
+        calculation.innerHTML += "-";
         total.innerHTML = "";
         break;
       case 2:
-        calculation.innerHTML += "<span class='add-color'>×</span>";
+        calculation.innerHTML += "×";
         total.innerHTML = "";
         break;
       case 3:
-        calculation.innerHTML += "<span class='add-color'>÷</span>";
+        calculation.innerHTML += "÷";
         total.innerHTML = "";
         break;
       default:
@@ -45,15 +45,15 @@ for (let i = 0; i < operatorBox1.length; i++) {
   operatorBox1[i].addEventListener("click", () => {
     switch (i) {
       case 0:
-        calculation.innerHTML += "<span class='add-color'>.</span>";
+        calculation.innerHTML += ".";
         total.innerHTML = "";
         break;
       case 1:
-        calculation.innerHTML += "<span class='add-color'>(</span>";
+        calculation.innerHTML += "(";
         total.innerHTML = "";
         break;
       case 2:
-        calculation.innerHTML += "<span class='add-color'>)</span>";
+        calculation.innerHTML += ")";
         total.innerHTML = "";
         break;
     }
@@ -112,35 +112,105 @@ equalBox.addEventListener("click", () => {
   calculation.innerHTML = "";
 });
 
-// document.addEventListener("keydown", function (event) {
-//     const key = event.key;
+document.addEventListener("keydown", function (event) {
+  const key = event.key;
 
-//     if (/\d/.test(key)) {
-//       // Check if the pressed key is a number
-//       calculation.innerHTML += key;
-//       total.innerHTML = "";
-//     } else if (key === "+") {
-//       calculation.innerHTML += "+";
-//     } else if (key === "-") {
-//       calculation.innerHTML += "-";
-//     } else if (key === "*") {
-//       calculation.innerHTML += "×";
-//     } else if (key === "/") {
-//       calculation.innerHTML += "÷";
-//     } else if (key === "Enter") {  // Evaluate the expression when Enter key is pressed
+  switch (key) {
+    case "0":
+    case "1":
+    case "2":
+    case "3":
+    case "4":
+    case "5":
+    case "6":
+    case "7":
+    case "8":
+    case "9":
+      calculation.innerHTML += key;
+      total.innerHTML = "";
+      break;
 
-//       let expression = calculation.innerHTML;
+    case "+":
+      calculation.innerHTML += "+";
+      total.innerHTML = "";
+      break;
 
-//       expression = expression.replace(/×/g, "*");
-//       expression = expression.replace(/÷/g, "/");
-//       expression = expression.replace(/−/g, "-");
-//       expression = expression.replace(/＋/g, "+");
+    case "-":
+      calculation.innerHTML += "-";
+      total.innerHTML = "";
+      break;
 
-//       let calculationResult = eval(expression);
-//       total.innerHTML = calculationResult;
-//       calculation.innerHTML = "";
-//     } else if (key === "Escape") {       // Clear the expression when Escape key is pressed
-//         calculation.innerHTML = ""
-//         total.innerHTML = ""
-//     }
-//   });
+    case "*":
+      calculation.innerHTML += "×";
+      total.innerHTML = "";
+      break;
+
+    case "/":
+      calculation.innerHTML += "÷";
+      total.innerHTML = "";
+      break;
+
+    case ".":
+      calculation.innerHTML += ".";
+      total.innerHTML = "";
+      break;
+
+    case "(":
+      calculation.innerHTML += "(";
+      total.innerHTML = "";
+      break;
+
+    case ")":
+      calculation.innerHTML += ")";
+      total.innerHTML = "";
+      break;
+
+    case "Enter":
+      let expression = calculation.innerHTML;
+
+      expression = expression.replace(/×/g, "*");
+      expression = expression.replace(/÷/g, "/");
+      expression = expression.replace(/−/g, "-");
+      expression = expression.replace(/＋/g, "+");
+
+      let calculationResult = eval(expression);
+      total.innerHTML = calculationResult;
+      calculation.innerHTML = "";
+
+      break;
+
+    case "Escape":
+      // Clear the expression when Escape key is pressed
+      calculation.innerHTML = "";
+      total.innerHTML = "";
+      break;
+
+    case "Backspace":
+      let expression2 = calculation.innerHTML;
+
+      // Check if the last character is an operator
+      const lastCharacter = expression2.slice(-1);
+      const operators = ["+", "-", "×", "÷", ".", "(", ")"];
+
+      if (operators.includes(lastCharacter)) {
+        // If the last character is an operator, remove it
+        expression2 = expression2.slice(0, -1);
+      } else {
+        // If the last character is not an operator, remove the last number or operator
+
+        // Find the last number or operator including the <span> tags
+        const lastElementMatch = expression2.match(
+          /<span[^>]*>[^<]*<\/span>|[^<]/g
+        );
+        const lastElement = lastElementMatch[lastElementMatch.length - 1];
+
+        // Remove the last number or operator from the expression
+        expression2 = expression2.slice(0, -lastElement.length);
+      }
+
+      calculation.innerHTML = expression2;
+
+    default:
+      break;
+  }
+});

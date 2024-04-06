@@ -105,9 +105,9 @@ p {
     background-color: #956926;   /* the operator-box has other styles at the top. Only the background color is changed here */
 }
 
-.add-color {
+/* .add-color {
     color: #f0aa40; 
-}
+} */
 
 .clear-box {
     background-color: rgb(146, 55, 58);  /* the clear-box has other styles at the top. Only the background color is changed here */
