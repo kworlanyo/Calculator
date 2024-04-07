@@ -4,8 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: 'Crimson Text', serif;
-    color: rgb(78, 78, 78);
+    
 }
 
 body {
@@ -14,9 +13,9 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    /* background-color: #444444; */
     background: linear-gradient(to left, #52575a, #414345);
-
+    font-family: 'Crimson Text', serif;
+    color: rgb(78, 78, 78);
 }
 
 h1 {
@@ -74,7 +73,7 @@ p {
     line-height: 100%;
 }
 
-.mini-container2, .mini-container2a, .mini-container3, .mini-container4, .mini-container5 {   /*Since they have the same styles, they are grouped together*/
+.mini-container2, .mini-container2a, .mini-container3, .mini-container4, .mini-container5 { 
     width: 100%;
     height: auto;
     display: flex;
@@ -86,7 +85,7 @@ p {
     color: #f5f5f5;
 }
 
-.number-box, .zero-box, .equal-box, .operator-box, .operator-box1, .operator-box2, .clear-box {  /*Since they have the same styles, they are grouped together*/
+.box, .equal-box {
     width: 20%;
     height: 60px;
     background-color: #333;
@@ -97,36 +96,16 @@ p {
     border-radius: 4px;
 }
 
-.equal-box {
-    background-color: #378439;
-}
-
-.operator-box, .operator-box1, .operator-box2 {
-    background-color: #956926;   /* the operator-box has other styles at the top. Only the background color is changed here */
-}
-
-/* .add-color {
-    color: #f0aa40; 
-} */
-
-.clear-box {
-    background-color: rgb(146, 55, 58);  /* the clear-box has other styles at the top. Only the background color is changed here */
-}
-
-.hover:hover {
+.box:hover {
     background-color: #4b4b4b;
 }
 
-.active:active {
-    background-color:  #313131;
+.box:active {
+    background-color: #313131;
 }
 
-.hover2:hover {
-    background-color: #bb8431; 
-}
-
-.active2:active {
-    background-color: #71501f; 
+.equal-box {
+    background-color: #378439;
 }
 
 .equal-box:hover {
@@ -137,14 +116,29 @@ p {
     background-color: #2a632b;
 }
 
+.operator-box{
+    background-color: #956926;
+}
+
+.operator-box:hover {
+    background-color: #bb8431;
+}
+
+.operator-box:active {
+    background-color: #71501f;
+}
+
+.clear-box {
+    background-color: rgb(146, 55, 58);
+}
+
 .clear-box:hover {
-    background-color: rgb(181, 68, 72);;
+    background-color: rgb(181, 68, 72);
 }
 
 .clear-box:active {
-    background-color: rgb(125, 48, 50);;
+    background-color: rgb(125, 48, 50);
 }
-
 
 
 @media only screen and (max-width: 1150px) {
