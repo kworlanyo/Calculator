@@ -47,7 +47,8 @@ boxes.forEach((box) => {
     // total.innerText = "";
     numbersEvent(box);
   });
-  box.addEventListener("touchstart", () => {
+  box.addEventListener("touchstart", (e) => {
+    e.preventDefault();
     numbersEvent(box);
   });
 });
@@ -58,7 +59,8 @@ backspace.addEventListener("click", () => {
   // calculation.innerText = newExpression;
   backspaceEvent();
 });
-backspace.addEventListener("touchstart", () => {
+backspace.addEventListener("touchstart", (e) => {
+  e.preventDefault();
   backspaceEvent();
 });
 
@@ -81,7 +83,8 @@ equalBox.addEventListener("click", () => {
   equalEvent();
 });
 
-equalBox.addEventListener("touchstart", () => {
+equalBox.addEventListener("touchstart", (e) => {
+  e.preventDefault();
   equalEvent();
 });
 
