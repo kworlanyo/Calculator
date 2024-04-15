@@ -14,12 +14,12 @@ function numbersEvent(box) {
 }
 
 function numbersTouchEvent(box) {
-  if (box.innerHTML === "C") {
-    calculation.innerHTML = "";
+  if (box.textContent === "C") {
+    calculation.textContent = "";
   } else {
-    calculation.innerHTML += box.innerHTML;
+    calculation.textContent += box.textContent;
   }
-  total.innerHTML = "";
+  total.textContent = "";
 }
 
 function backspaceEvent() {
@@ -57,7 +57,7 @@ boxes.forEach((box) => {
     numbersEvent(box);
   });
   box.addEventListener("touchstart", (e) => {
-    // e.preventDefault();
+    e.preventDefault();
     numbersTouchEvent(box);
   });
 });
