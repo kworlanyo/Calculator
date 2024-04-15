@@ -57,7 +57,7 @@ boxes.forEach((box) => {
     numbersEvent(box);
   });
   box.addEventListener("touchstart", (e) => {
-    e.preventDefault();
+    // e.preventDefault();
     numbersTouchEvent(box);
   });
 });
