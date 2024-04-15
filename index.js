@@ -4,24 +4,22 @@ const equalBox = document.querySelector(".equal-box");
 const backspace = document.querySelector(".backspace");
 const boxes = document.querySelectorAll(".box");
 
-boxes.forEach((box) => {
-  box.addEventListener("click", () => {
-    if (box.innerText === "C") {
-      calculation.innerText = "";
-    } else {
-      calculation.innerText += box.innerText;
-    }
-    total.innerText = "";
-  });
-});
+function numbersEvent(box) {
+  if (box.innerText === "C") {
+    calculation.innerText = "";
+  } else {
+    calculation.innerText += box.innerText;
+  }
+  total.innerText = "";
+}
 
-backspace.addEventListener("click", () => {
+function backspaceEvent() {
   let expression = calculation.innerText;
   let newExpression = expression.slice(0, -1);
   calculation.innerText = newExpression;
-});
+}
 
-equalBox.addEventListener("click", () => {
+function equalEvent() {
   try {
     let expression = calculation.innerText;
 
@@ -37,6 +35,54 @@ equalBox.addEventListener("click", () => {
   } catch (error) {
     total.innerText = "Error";
   }
+}
+
+boxes.forEach((box) => {
+  box.addEventListener("click", () => {
+    // if (box.innerText === "C") {
+    //   calculation.innerText = "";
+    // } else {
+    //   calculation.innerText += box.innerText;
+    // }
+    // total.innerText = "";
+    numbersEvent(box);
+  });
+  box.addEventListener("touchstart", () => {
+    numbersEvent(box);
+  });
+});
+
+backspace.addEventListener("click", () => {
+  // let expression = calculation.innerText;
+  // let newExpression = expression.slice(0, -1);
+  // calculation.innerText = newExpression;
+  backspaceEvent();
+});
+backspace.addEventListener("touchstart", () => {
+  backspaceEvent();
+});
+
+equalBox.addEventListener("click", () => {
+  // try {
+  //   let expression = calculation.innerText;
+
+  //   // Changing the operators to Javascript recognized operators
+  //   expression = expression.replace(/×/g, "*");
+  //   expression = expression.replace(/÷/g, "/");
+  //   expression = expression.replace(/−/g, "-");
+  //   expression = expression.replace(/＋/g, "+");
+
+  //   let calculationResult = eval(expression);
+  //   total.innerText = calculationResult;
+  //   calculation.innerText = "";
+  // } catch (error) {
+  //   total.innerText = "Error";
+  // }
+  equalEvent();
+});
+
+equalBox.addEventListener("touchstart", () => {
+  equalEvent();
 });
 
 function add(input) {
@@ -90,27 +136,29 @@ document.addEventListener("keydown", function (event) {
       break;
 
     case "Enter":
-      try {
-        let expression = calculation.innerText;
+      // try {
+      //   let expression = calculation.innerText;
 
-        // Changing the operators to Javascript recognized operators
-        expression = expression.replace(/×/g, "*");
-        expression = expression.replace(/÷/g, "/");
-        expression = expression.replace(/−/g, "-");
-        expression = expression.replace(/＋/g, "+");
+      //   // Changing the operators to Javascript recognized operators
+      //   expression = expression.replace(/×/g, "*");
+      //   expression = expression.replace(/÷/g, "/");
+      //   expression = expression.replace(/−/g, "-");
+      //   expression = expression.replace(/＋/g, "+");
 
-        let calculationResult = eval(expression);
-        total.innerText = calculationResult;
-        calculation.innerText = "";
-      } catch (error) {
-        total.innerText = "Error";
-      }
+      //   let calculationResult = eval(expression);
+      //   total.innerText = calculationResult;
+      //   calculation.innerText = "";
+      // } catch (error) {
+      //   total.innerText = "Error";
+      // }
+      equalEvent();
       break;
 
     case "Backspace":
-      let expression2 = calculation.innerText;
-      let newExpression = expression2.slice(0, -1);
-      calculation.innerText = newExpression;
+      // let expression2 = calculation.innerText;
+      // let newExpression = expression2.slice(0, -1);
+      // calculation.innerText = newExpression;
+      backspaceEvent();
       break;
 
     case "Escape":
