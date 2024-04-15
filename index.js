@@ -13,6 +13,15 @@ function numbersEvent(box) {
   total.innerText = "";
 }
 
+function numbersTouchEvent(box) {
+  if (box.innerHTML === "C") {
+    calculation.innerHTML = "";
+  } else {
+    calculation.innerHTML += box.innerHTML;
+  }
+  total.innerHTML = "";
+}
+
 function backspaceEvent() {
   let expression = calculation.innerText;
   let newExpression = expression.slice(0, -1);
@@ -49,7 +58,7 @@ boxes.forEach((box) => {
   });
   box.addEventListener("touchstart", (e) => {
     e.preventDefault();
-    numbersEvent(box);
+    numbersTouchEvent(box);
   });
 });
 
