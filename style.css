@@ -64,6 +64,7 @@ p {
 .calculation {
     width: 100%;
     word-break: break-all;
+    font-size: 36px;
     color: #f5f5f5;
 }
 
