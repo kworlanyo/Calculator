@@ -13,15 +13,6 @@ function numbersEvent(box) {
   total.innerText = "";
 }
 
-function numbersTouchEvent(box) {
-  if (box.textContent === "C") {
-    calculation.textContent = "";
-  } else {
-    calculation.textContent += box.textContent;
-  }
-  total.textContent = "";
-}
-
 function backspaceEvent() {
   let expression = calculation.innerText;
   let newExpression = expression.slice(0, -1);
@@ -56,10 +47,10 @@ boxes.forEach((box) => {
     // total.innerText = "";
     numbersEvent(box);
   });
-  box.addEventListener("touchstart", (e) => {
-    e.preventDefault();
-    numbersEvent(box);
-  });
+  // box.addEventListener("touchstart", (e) => {
+  //   e.preventDefault();
+  //   numbersEvent(box);
+  // });
 });
 
 backspace.addEventListener("click", () => {
@@ -68,10 +59,10 @@ backspace.addEventListener("click", () => {
   // calculation.innerText = newExpression;
   backspaceEvent();
 });
-backspace.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  backspaceEvent();
-});
+// backspace.addEventListener("touchstart", (e) => {
+//   e.preventDefault();
+//   backspaceEvent();
+// });
 
 equalBox.addEventListener("click", () => {
   // try {
@@ -92,10 +83,10 @@ equalBox.addEventListener("click", () => {
   equalEvent();
 });
 
-equalBox.addEventListener("touchstart", (e) => {
-  e.preventDefault();
-  equalEvent();
-});
+// equalBox.addEventListener("touchstart", (e) => {
+//   e.preventDefault();
+//   equalEvent();
+// });
 
 function add(input) {
   calculation.innerHTML += input;
