@@ -39,54 +39,17 @@ function equalEvent() {
 
 boxes.forEach((box) => {
   box.addEventListener("click", () => {
-    // if (box.innerText === "C") {
-    //   calculation.innerText = "";
-    // } else {
-    //   calculation.innerText += box.innerText;
-    // }
-    // total.innerText = "";
     numbersEvent(box);
   });
-  // box.addEventListener("touchstart", (e) => {
-  //   e.preventDefault();
-  //   numbersEvent(box);
-  // });
 });
 
 backspace.addEventListener("click", () => {
-  // let expression = calculation.innerText;
-  // let newExpression = expression.slice(0, -1);
-  // calculation.innerText = newExpression;
   backspaceEvent();
 });
-// backspace.addEventListener("touchstart", (e) => {
-//   e.preventDefault();
-//   backspaceEvent();
-// });
 
 equalBox.addEventListener("click", () => {
-  // try {
-  //   let expression = calculation.innerText;
-
-  //   // Changing the operators to Javascript recognized operators
-  //   expression = expression.replace(/×/g, "*");
-  //   expression = expression.replace(/÷/g, "/");
-  //   expression = expression.replace(/−/g, "-");
-  //   expression = expression.replace(/＋/g, "+");
-
-  //   let calculationResult = eval(expression);
-  //   total.innerText = calculationResult;
-  //   calculation.innerText = "";
-  // } catch (error) {
-  //   total.innerText = "Error";
-  // }
   equalEvent();
 });
-
-// equalBox.addEventListener("touchstart", (e) => {
-//   e.preventDefault();
-//   equalEvent();
-// });
 
 function add(input) {
   calculation.innerHTML += input;
@@ -139,28 +102,10 @@ document.addEventListener("keydown", function (event) {
       break;
 
     case "Enter":
-      // try {
-      //   let expression = calculation.innerText;
-
-      //   // Changing the operators to Javascript recognized operators
-      //   expression = expression.replace(/×/g, "*");
-      //   expression = expression.replace(/÷/g, "/");
-      //   expression = expression.replace(/−/g, "-");
-      //   expression = expression.replace(/＋/g, "+");
-
-      //   let calculationResult = eval(expression);
-      //   total.innerText = calculationResult;
-      //   calculation.innerText = "";
-      // } catch (error) {
-      //   total.innerText = "Error";
-      // }
       equalEvent();
       break;
 
     case "Backspace":
-      // let expression2 = calculation.innerText;
-      // let newExpression = expression2.slice(0, -1);
-      // calculation.innerText = newExpression;
       backspaceEvent();
       break;
 
